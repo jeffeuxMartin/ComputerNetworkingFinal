@@ -39,5 +39,8 @@ def feed_stream():
 
 if __name__ == '__main__': 
     print('run') 
-    # app.run(host='127.0.0.1', port=8000, debug=True) 
-    app.run(host='192.168.43.228', port=8000, debug=True) 
+    try: 
+        # app.run(host='127.0.0.1', port=8000, debug=True) 
+        app.run(host=__import__('sys').argv[1], port=8000, debug=True, threaded=True) 
+    except IndexError:
+        app.run(host='140.112.247.246', port=8000, debug=True) 
